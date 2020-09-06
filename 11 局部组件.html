@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+<first></first>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    let a = {
+        template:`
+        <div>我是局部组件</div>
+        `
+    }
+    // 2 注册 在Vue内部注册
+    // 使用也只能在Vue规定的范围内使用
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        // 注意是components别少加s
+        components:{
+            "first":a,
+        }
+    })
+</script>
+
+</body>
+</html>

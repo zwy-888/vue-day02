@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+<com></com>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    // 组件的使用包括三部分，组件的定义，组件的注册，组件的使用
+    // new Vue 就是一个根组件
+    // 组件要写在根组件的前面
+    // 组件就是普通的js对象
+    // template 后面跟的是数字1左边的那个符号
+
+    // 1 组件的定义
+    let com = {
+        // template 后面不能用字符串要有标签
+        template: `<div>这是我的第一个组件</div>`
+    }
+    // 2 全局组建的注册 全局组件和局部组件的差别体现在
+    // 组件的注册上全局组件注册是写在vue外部
+    // 局部组件的注册是写在vue内部
+    Vue.component("com",com)
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+    })
+
+
+</script>
+
+</body>
+</html>

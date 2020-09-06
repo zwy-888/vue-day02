@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--    多个变量的显示依赖于一个变量的变化  此时用计算computed-->
+    {{msg}}
+    <span>{{msg}}</span>
+    <br>
+    十位:<input type="text" v-model="shi" max="9" min="0">
+    个位:<input type="text" v-model="ge" max="9" min="0">
+    结果：{{ shi*10 + +ge}}
+    <!--   也可以这样写  -->
+    结果：{{result}}
+    <!--  第一个加号代表拼接第二个代表加法  -->
+    <!-- 一个变量的值依赖于多个值，任一个变他都变此时用监听watch -->
+</div>
+<script src="js/vue.min.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            num: 99,
+            shi:"",
+            ge:"",
+
+            msg:"哈哈"
+        },
+        methods:{
+            lowNum(){
+                this.num = this.name - 3
+            }
+        },
+        computed:{
+            //将外面的运算全部写入到这个里面用函数来写必须要有return值
+            result(){
+                return this.shi * 10 + +this.ge
+            }
+        }
+    })
+</script>
+</body>
+</html>

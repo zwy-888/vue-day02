@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--// 思路，1 v-model实现输入框和父组件的联动-->
+<!--2 在子组件里通过props保存与父组件绑定的属性获得父组件的值-->
+<div id="app">
+    <input type="text" v-model="username">
+    父组件{{username}}
+    <br>
+    <com :text="username"></com>
+<!--    在此处绑定子组件和父组件的联系  将子组件text与username绑定，并将text传回props中 -->
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    let com={
+        template:`
+<div>子组件{{text}}</div>`,
+        props:['text'],
+    }
+
+
+    new Vue({
+        el: "#app",
+        data: {
+            username:'hello'
+        },
+        methods: {},
+        components:{
+            com:com
+        }
+    })
+</script>
+
+</body>
+</html>

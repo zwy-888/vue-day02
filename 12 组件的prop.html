@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .a{
+            color: yellow;
+        }
+        .b{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <com></com>
+    <com A="a"></com>
+<!--    把A传到props里面的A  -->
+    <com A="b"></com>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    let com = {
+        template:`
+<div :class="A">这是我的组件</div>
+        `,
+        // props 在组件内接受组件标签上传递过来的参数，从而使定义的组件拥有动态的属性
+        // props属性理解为一个数组 ，里面是所有组件可以接受到的参数
+        //
+        props:["A","user"],
+        created: function () {
+            console.log(this.user);
+        }
+    }
+
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components:{
+            com:com,
+        }
+    })
+</script>
+
+</body>
+</html>

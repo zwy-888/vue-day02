@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <second></second>
+
+</div>
+
+
+<script src="js/vue.min.js"></script>
+<script>
+
+    let first = {
+        template: `
+            <div>这是我的分页组件
+                <button @click="change">点我</button>
+                <div>我是嵌套的div</div>
+            </div>
+        `,
+        data: function () {
+            return {
+                count: 50,
+            }
+        },
+        methods: {
+            change() {
+                alert("11111")
+            }
+        },
+        created: function () {
+            // 数据赋值完成后触发
+            alert("数据赋值完成了")
+        }
+    }
+
+    // 全局组件  一般不推荐使用
+    Vue.component("second", first)
+
+    // 把vue的实例作为一个组件  根组件
+    new Vue({
+        el: "#app",
+        data: {},
+    })
+</script>
+
+</body>
+</html>

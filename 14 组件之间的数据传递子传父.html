@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子传父</title>
+</head>
+<body>
+
+<div id="app">
+<span>这是父组件中的：{{username}}</span>
+    <br>
+    <app @btn="clickme"></app>
+<!--    在此处@btn 与子组件传递参数处的btn对应，右侧的函数与父组件的函数对应产生联系-->
+</div>
+
+<script src="js/vue.min.js"></script>
+
+<script>
+    let app ={
+        template:`
+            <div>子组件:
+                <button @click="clickBtn">按钮</button>
+            </div>
+        `,
+        // 二 在子组件的渲染模板按钮处绑定点击事件
+        methods: {
+            //一 先在 在函数内部提交一个自定义事件，且包含要传递的参数
+            clickBtn(){
+                //点击按钮将参数传到父组件
+                // 触发一个自定义事件 参数一 事件名随便写，参数二 要传递的参数
+                this.$emit("btn",'白纸教育','yan')
+            }
+        },
+    }
+
+    new Vue({
+        el: "#app",
+        data: {
+            username:''
+        },
+        methods: {
+            clickme(test,name){
+                console.log(test,name)
+                this.username = test+name;
+            }
+        },
+        components:{
+            app:app
+        },
+    })
+</script>
+
+</body>
+</html>

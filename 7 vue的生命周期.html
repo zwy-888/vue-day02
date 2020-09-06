@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <span id="span">{{count}}</span>
+
+    <input type="button" value="修改" @click="change">
+</div>
+
+
+<script src="js/vue.min.js"></script>
+<script>
+    // 在这一步创建一个vue对象， 初始化 运行（运行包括） 销毁
+    new Vue({
+        el: "#app",
+        data: {
+            count:40,
+        },
+        methods: {
+            change(){
+                this.count--;
+            }
+        },
+        //1创建前el 和data还未有这几个属性，只是进行了自身那个事件的绑定，和生命周期的初始化
+        beforeCreate:function () {
+            console.log("beforeCreat:" + this.count)
+        },
+        //2 创建后vue实例的el 和data属性已经被初始化
+        created:function () {
+            console.log("beforeCreat:" + this.count)
+        },
+        // 3 beforeMount 在执行时将el指定的范围作为模板编译，但是数据并未渲染到页面
+        beforeMount: function () {
+            console.log("beforemount:" + document.getElementById("span").innerText)
+        },
+        // 4 mount 该函数执行时已经将数据渲染到了页面并且完成了页面数据的更新
+        mounted: function () {
+            console.log("mounted:" + document.getElementById("span").innerText)
+        },
+        // 5 该函数在data数据发生变化是执行，这个执行仅仅是在实例中发生了变化，但是页面显示的数据未发生变化
+        beforeUpdate: function () {
+            console.log("beforeUpdate："+ this.count);
+            console.log("beforeUpdate: "+ document.getElementById("span").innerText);
+        },
+        // 6 updated 修改后vue里面的data变了，渲染的数据也变了
+        updated:function () {
+            console.log("beforeUpdate："+ this.count);
+            console.log("beforeUpdate: "+ document.getElementById("span").innerText);
+        },
+        // 7 beforeDes 执行此钩子vue实例里的data还未被销毁
+        beforeDestroy:function () {
+
+        },
+        // 8 destroyed 执行此函数时vue实例里面的data已被销毁
+        destroyed:function () {
+
+        }
+    })
+
+</script>
+
+</body>
+</html>

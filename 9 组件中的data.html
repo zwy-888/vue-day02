@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+<com></com>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    let a = {
+        template:
+            `<div>这是组件
+                <span>这是组件中的data{{username}}</span>
+            </div>
+            `,
+        // 组建中在定义一个data，实际是一个函数
+        data:function () {
+            // 数据定义完成后要return和前面的计算computed一样要
+                return {
+                    username: "小黑"
+                }
+        }
+    }
+    Vue.component("com",a)
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    计算全名：{{result}}
+    姓：<input type="text" v-model="xing">
+    名：<input type="text" v-model="ming">
+    <br>
+    监听全名：<input type="text" v-model="fullname">
+    姓：{{firstname}}
+    名：{{secondname}}
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            quanming:"",
+            xing:"",
+            ming:"",
+            fullname:"闫正为",
+            firstname:"",
+            secondname:"",
+        },
+        methods: {},
+        computed:{
+            result(){
+                return this.quanming = this.xing + this.ming
+
+            }
+        },
+        watch:{
+            fullname(){
+                let rst = this.fullname.split(' ');// 这里不要加逗号
+                this.firstname = rst[0];//这里必须加分号
+                this.secondname = rst[1]
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

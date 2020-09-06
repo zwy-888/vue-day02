@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+    })
+</script>
+<script>
+    let user = {
+        // 属性
+        username:"小黑",
+        //方法
+        app:function () {
+            //当前this指向的user实例
+            console.log(this.username)
+        }
+    }
+    user.app()
+
+    let a = {
+        username:"小白",
+        app1:function () {
+            //一般函数回调函数中this指向会被改变获取不到this对象”小白“
+            setInterval(function () {
+                console.log(this.username)
+            },1000)
+        }
+    }
+    a.app1()
+
+    let b = {
+        username:"小黄",
+        //箭头函数回调函数中this指向不会被改变能获取到this对象”小黄“
+        app2:function () {
+            setTimeout(()=>console.log(this.username),1000)
+        }
+    }
+    b.app2()
+
+    // setTimeout()是打印一遍
+    // setInterval()隔一段时间打印一次
+
+</script>
+
+</body>
+</html>

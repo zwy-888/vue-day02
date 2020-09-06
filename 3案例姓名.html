@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    全名：{{result}}
+    姓：<input type="text" v-model="xin">
+    名：<input type="text" v-model="ming">
+    <br>
+    全名：<input type="text" v-model="quanming">
+    姓：{{hxing}}
+    名：{{hming}}
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            allname: "",
+            xin: "闫",
+            ming: "",
+
+            quanming:"",
+            hxing:"",
+            hming:"",
+        },
+        methods: {
+
+        },
+        computed:{
+            result(){
+                return this.xin + this.ming
+            }
+        },
+        watch:{
+            quanming(){
+                let split = this.quanming.split(" ")
+                this.hxing = split[0];
+                this.hming = split[1];
+            },
+        }
+    })
+</script>
+
+</body>
+</html>
