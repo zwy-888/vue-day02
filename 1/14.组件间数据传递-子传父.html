@@ -10,7 +10,7 @@
 
     这是父组件中的username：{{username}}
     <hr>
-    <!-- 接受到子组件内部传递过来的自定义事件  并且绑定给父组件   -->
+    <!-- @btn 对应子组件传的值不能变要对应，接受到子组件内部传递过来的自定义事件  并且绑定给父组件  clickMe对应父组件的事件   -->
     <com @btn="clickMe"></com>
 
 </div>
@@ -24,6 +24,7 @@
                 <button @click="clickBtn">按钮</button>
             </div>
         `,
+        // template里面的"@click" 是点击事件 后面的clickBtn要和子组件的事件对应
         methods: {
             // 在函数内部提交一个自定义事件  且包含要传递的参数
             clickBtn() {

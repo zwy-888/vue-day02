@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--父传子-->
+<!--思路 1 父组件的输入框绑定data中的数据v-model-->
+<!--思路 2 子组件通过props获取到子标签传的父标签的信息-->
+<div id="app">
+    <span>我是父标签</span>
+    <input type="text" v-model="username">
+    <app :text="username"></app>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    let app ={
+        template:`<div>我是子标签{{text}}</div>`,
+        props:["text"]
+    }
+    new Vue({
+        el: "#app",
+        data: {
+            username:"",
+        },
+        methods: {},
+        components:{
+            app:app
+        }
+    })
+</script>
+
+</body>
+</html>
